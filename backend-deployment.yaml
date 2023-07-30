@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: europe-central2-docker.pkg.dev/cat-site-394211/cat-site/cat-site-back:latest
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 4200
